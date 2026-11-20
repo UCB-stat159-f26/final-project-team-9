@@ -1,0 +1,124 @@
+# Project 3) Final Project
+
+The final project involves using a website to present a free-form report-style analysis where you will investigate some questions of interest on datasets from the [**Berkeley Police Transparency Hub**](https://bpd-transparency-initiative-berkeleypd.hub.arcgis.com/search). To be clear, this project is NOT a replication assignment. Instead, you will come up with your own research questions.
+
+As you know, BPD shares the following datasets:
+
+* Stop Data
+* Calls for Service
+* Use of Force
+* Collision Data (Traffic Safety)
+* Crime Data (Arrests)
+
+You have to use at least three of the datasets for your project.
+
+> **Note**
+>
+> Implementing sophisticated or novel statistical models is not a requirement of the project (if you'd like to, go for it!), but you should nonetheless conduct an organized, detailed, and thorough analysis of your questions.
+>
+> Most importantly, your project should exemplify the workflows and practices that we have been developing throughout the semester.
+
+## Proposal Guidelines (*quasi pre-registration*)
+
+The proposal process for the project is relatively simple: we just want to make sure your group is on the same page and has a reasonably fleshed out idea before start working on the project.
+
+### Google Form (to be answered in lab, 11/17)
+
+We will be dedicating some time during lab on November 17 as a space for you to form groups and hash out some of the project's details. You will be filling out a google form to:
+
+* List the team members
+* Specify which data sets you will use
+* Describe at least 2 research questions per member
+
+After your lab GSI OK's your proposal, your group can start the project.
+
+### Questions and Answers
+
+What data sets do you plan to use, and what questions do you intend to explore/ask with your datasets? Roughly speaking, what strategies do you anticipate using to answer these questions (any statistical models, plotting, etc.)?
+
+> **Be Original**
+>
+> To avoid redundant work with Project-2, you should **come up with questions unrelated with the 2024 BPD Annual Report**.
+
+You can get some guidance or inspiration from the Snapshots and Dashboards available in the Transparency Hub:
+
+* Stop Data: <https://bpd-transparency-initiative-berkeleypd.hub.arcgis.com/pages/stop-data>
+* Traffic Safety: <https://bpd-transparency-initiative-berkeleypd.hub.arcgis.com/pages/traffic-safety>
+* Calls for Service: <https://bpd-transparency-initiative-berkeleypd.hub.arcgis.com/pages/cfs-stats>
+* Use of Force: <https://bpd-transparency-initiative-berkeleypd.hub.arcgis.com/pages/use-of-force>
+* Crime: <https://bpd-transparency-initiative-berkeleypd.hub.arcgis.com/pages/crimes>
+
+### Expected Challenges
+
+What challenges do you expect in carrying out your analysis (computational, data storage, etc.)? What plans do you have in-place to manage these challenges as they arise?
+
+## Project Deliverables
+
+### Data
+
+As mentioned above, you have to use at least three of the datasets from BPD for your project. Also, you should aim to store your data in your GitHub repository. If the data cannot be included in the repository, your code should access it remotely and store more manageable subsets of it relevant for plotting or for certain parts of your analysis. You can also explore other ways of storing datasets, such as Zenodo or Huggingface.
+
+### Functional structure of your code and testing
+
+You should identify steps amenable to be put into standalone functions and write a proper function for those, with a complete python docstring or R comments describing the purpose of the function, their inputs and types, and their outputs.
+
+> **Important**
+>
+> **This is a requirement.** You must structure your code to include at least four functions that you import from a separate R/Py script, that you test and document properly (feel free to use more as your analysis dictates).
+
+You may choose to put your functions into pure R/Python files that you import separately or in the Quarto/Jupyter notebooks itself. Make the choice that you find cleanest/most fluid for your workflow.
+
+### Analysis notebooks and supporting code
+
+Break down your analysis into as many notebooks as is reasonable for convenient reading and execution. There is no hard and fast rule for this, just as there isn't for how many paragraphs or figures a good scientific paper should have. You should consider readability, execution time, total notebook length, etc, as criteria in your decisions.
+
+This essay by Stephen Wolfram, the creator of Mathematica (part of the inspiration for the Jupyter Notebook), has some good thoughts on what makes a well written computational narrative.
+
+Consider how to "chain" your analyses with intermediate results being stored so they don't need to be recomputed from scratch each time. Also, be mindful of saving key figures you may want to reuse in your report to disk, so the main narrative notebook can reuse them for display and discussion.
+
+### Main Narrative
+
+In addition to your analysis notebooks, please include a **main** notebook that summarizes and discusses your results. It can contain figures referenced from disk or simple summary information (for example if you want to display part of a dataframe) from variables read from disk, but no significant computations at all. Think of this as your "paper" or "main report".
+
+Discuss the assumptions you can make about the data to justify your analysis. If you propose any statistical hypothesis/model in your analysis, discuss your justifications, considering how the data was acquired.
+
+### Author Contributions and Reflections
+
+Include a notebook to describe, for each team member, what they did in the project (something like an *About* page). It doesn't have to be a long, detailed story, a few sentences per person should suffice. All team members must agree to the language in this section. (By the way, this is standard practice in many scientific journals).
+
+Likewise, in the same notebook include another section to describe personal reflections of each team member: the things you learned while working in this project, what were some the frustrating and/or confusing parts, which things you would do different, etc.
+
+While in principle the project grade is the same for all team members, we reserve the right to lower the grade of anyone who doesn't contribute to the team effort.
+
+### Reproducibility Support
+
+* **Environment:** like in previous assignments, provide an `environment.yml` file that creates an environment with all necessary dependencies to run your analysis. We recommend you to create a new virtual environment with this project that you can update as you include new libraries.
+* **Makefile:** you will also create a `Makefile` with `env` and `all` targets. The `env` target should make the environment with all necessary libraries, and update it with the relevant packages in `environment.yml` if it is already installed, and `all` should run all notebooks.
+* Don't forget to set random seeds for anything that has a stochastic component.
+
+### Good Repository Practices
+
+* **Work as a team.** Work collaboratively with your team members by adding commit messages and working in different branches, merging them into the main branch as your group sees fit. Also, consider taking advantage of issues as you review each other's work asynchronously, and even consider opening issues and opening Pull Request (PRs) that close them.
+* `README.md`: Write a short self-contained description of the project, including the motivation behind your project and the analysis you conducted. Include all relevant information about how to run the analysis, including installation steps (for any packages, environments, etc.), testing, and automation. A good `README.md` should provide all the useful information to help the user to start running the analysis.
+* `LICENSE`: You should explicitly state which licensing conditions apply to your work. We strongly suggest looking at Victoria Stodden's [Enabling Reproducible Research: Licensing Scientific Innovation](https://stodden.net/papers/ijclp-STODDEN-2009.pdf). She suggests a "Reproducible research standard" that licenses code, data and text/media materials in comparable terms that maximize resharing potential while providing due credit guarantees for the original authors.
+* `.gitignore`: Provide a git ignore file that prevents the automatic inclusion of unwanted files. This also helps you avoid noisy `git status` output that lists things you know you won't actually want to put under git's control.
+* A `binder` link: also deploy your repository on Binder, including the badge in your repository and ensuring that all notebooks can be executed for enhanced reproducibility.
+* `ai-documentation.txt`: As usual, please include a document describing how your group used any AI companions in the completion of the project. While the presence of this document shouldn't be strictly considered a "good repository practice" in real-world workflows, we will lump the presence of this document in with the grade for this component.
+
+### Website
+
+Finally, we ask that you deploy your analyses to a Quarto/MyST-generated website, hosted on GitHub Pages. Please take the time to consider how to best organize your websites to communicate the overall narrative of your project, from the main narrative document, to the individual analysis notebooks. Please also include the Binder badge somewhere in the website.
+
+To get some inspiration about how to organize and structure your projects, feel free to take a look at the following projects from previous semesters.
+
+1. **Comparing the South Rimo Glacier in the Karakoram with two other "Surge Type" glaciers**
+   * GitHub repo: <https://github.com/UCB-stat159-f26/final-group06>
+   * Website: <https://ucb-stat-159-f26.github.io/final-group06/>
+
+2. **Food Inflation Analysis Project**
+   * GitHub repo: <https://github.com/UCB-stat159-f26/final-group01>
+   * Website: <https://ucb-stat-159-f26.github.io/final-group01>
+
+3. **An Analysis on Animal Shelter Data from Sonoma County, CA**
+   * GitHub repo: <https://github.com/UCB-stat159-s23/project-Group12>
+   * Website: <https://ucb-stat-159-s23.github.io/project-Group12/README.html>
